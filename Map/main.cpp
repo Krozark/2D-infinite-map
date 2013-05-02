@@ -80,8 +80,9 @@ class Rotate_Hexa
             shape.setPoint(3,sf::Vector2f(sin_15+sin_75+sin_45,sin_45/2));
             shape.setPoint(4,sf::Vector2f(sin_75+sin_45,(sin_75+sin_45)/2));
             shape.setPoint(5,sf::Vector2f(sin_45,(sin_15+sin_75+sin_45)/2));
-            
-            shape.setOrigin(r_hauteur/2,r_hauteur/2);
+
+
+            shape.setOrigin(r_hauteur/2,r_hauteur/4);
 
 
             std::string text= std::to_string(X) + " " + std::to_string(Y);
@@ -89,7 +90,8 @@ class Rotate_Hexa
             txt.setString(text);
             txt.setCharacterSize(20);
             txt.setColor(sf::Color::White);
-            txt.setOrigin(30,40);
+            sf::FloatRect rec = txt.getLocalBounds();
+            txt.setOrigin(rec.width/2,rec.height/2);
             shape.setFillColor(sf::Color::Red);
             shape.setOutlineColor(sf::Color::Yellow);
             shape.setOutlineThickness(2);
@@ -106,11 +108,17 @@ class Rotate_Hexa
 
         static sf::Vector2i globleToLocal(sf::Vector2i pos)
         {
-            //Y = Y*decalage_x+X*decalage_y
-            //X = Y*decalage_y/2+X*decalage_x/2;
+            //posx = Y*decalage_x+X*decalage_y
+            //posy = Y*decalage_y/2+X*decalage_x/2;
+            //x = decalage_x
+            //y = decalage_y
+            //a = pos.x
+            //b = pos.y
+            //Y = -x⁻³y³X+x⁻³y²a-2x⁻²yb+x⁻¹a
+            //X = x⁻²y²X-x⁻²ya+2x⁻¹b
 
-            pos.x /= 100;
-            pos.y /= 100;
+            pos.x = 0;
+            pos.y = 0;
             return pos;
         }
 
@@ -123,6 +131,7 @@ int main(int argc,char* argv[])
 {
     rand_init();
     font.loadFromFile("Map/Map/data/ka1.ttf");
+
     /*cout<<"MAP_AREA_SIZE: "<<MAP_AREA_SIZE<<endl;
     Map<Tile> map_test;
     Tile* T = map_test(0,0);
