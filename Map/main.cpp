@@ -12,6 +12,8 @@ using namespace std;
 
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
+#include <vector>
 //#include <random>
 
 //extern std::default_random_engine generator;
@@ -55,6 +57,7 @@ class Hexa
 };
 
 float r_hauteur;
+sf::Font font;
 
 class Rotate_Hexa
 {
@@ -77,22 +80,33 @@ class Rotate_Hexa
             r_hauteur = sin_15+sin_45+sin_75;
             shape.setOrigin(r_hauteur/2,r_hauteur/2);
 
+
+            std::string text= std::to_string(X) + " " + std::to_string(Y);
+            txt.setFont(font);
+            txt.setString(text);
+            txt.setCharacterSize(20);
+            txt.setColor(sf::Color::White);
+            txt.setOrigin(30,40);
+            shape.setFillColor(sf::Color(random(0,255),random(0,255),random(0,255)));
+
             float decalage_x = (sin_45-sin_15);
             float decalage_y = (sin_75+sin_45);
     
-            shape.setPosition(r_hauteur+Y*decalage_x+X*decalage_y,r_hauteur+Y*decalage_y/2+X*decalage_x/2);
+            shape.setPosition(300+Y*decalage_x+X*decalage_y,300+Y*decalage_y/2+X*decalage_x/2);
+            txt.setPosition(shape.getPosition());
 
             //shape.setFillColor(sf::Color::White);
-            shape.setFillColor(sf::Color(random(0,255),random(0,255),random(0,255)));
 
         }
         sf::ConvexShape shape;
+        sf::Text txt;
 
 };
 
 int main(int argc,char* argv[])
 {
     rand_init();
+    font.loadFromFile("Map/Map/data/ka1.ttf");
     /*cout<<"MAP_AREA_SIZE: "<<MAP_AREA_SIZE<<endl;
     Map<Tile> map_test;
     Tile* T = map_test(0,0);
@@ -110,15 +124,13 @@ int main(int argc,char* argv[])
     T= map_test(-12,42);
     cout<<"T:"<<T->x<<" "<<T->y<<endl;*/
 
-    //Hexa h[3] = {Hexa(0,0),Hexa(0,200),Hexa(0,400)};
-    Rotate_Hexa r_h[] = {Rotate_Hexa(0,0),Rotate_Hexa(0,1),Rotate_Hexa(0,2),Rotate_Hexa(0,3),
-                          Rotate_Hexa(1,0),Rotate_Hexa(1,1),Rotate_Hexa(1,2),Rotate_Hexa(1,3),
-                          Rotate_Hexa(2,0),Rotate_Hexa(2,1),Rotate_Hexa(2,2),Rotate_Hexa(2,3),
-                          Rotate_Hexa(3,0),Rotate_Hexa(3,1),Rotate_Hexa(3,2),Rotate_Hexa(3,3)
-                        };
+    std::vector<Rotate_Hexa*> hexs;
+    for(int x=-0;x<10;++x)
+        for(int y=-0;y<10;++y)
+            hexs.emplace_back(new Rotate_Hexa(x,y));
 
      // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(1800, 1000), "SFML window");
     while (window.isOpen())
     {
          // Process events
@@ -131,11 +143,11 @@ int main(int argc,char* argv[])
         }
         // Clear screen
         window.clear();
-        // Draw the sprite
-      /*  for(int i=0;i<3;++i)
-            window.draw(h[i].shape);*/
-        for(int i=0;i<4*4;i+=1)
-            window.draw(r_h[i].shape);
+        for(auto hex: hexs)
+        {
+            window.draw(hex->shape);
+            window.draw(hex->txt);
+        }
         // Update the window
         window.display();
     }
