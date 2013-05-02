@@ -85,24 +85,26 @@ class Rotate_Hexa
             shape.setOrigin(r_hauteur/2,r_hauteur/4);
 
 
-            std::string text= std::to_string(X) + " " + std::to_string(Y);
             txt.setFont(font);
-            txt.setString(text);
             txt.setCharacterSize(20);
             txt.setColor(sf::Color::White);
-            sf::FloatRect rec = txt.getLocalBounds();
-            txt.setOrigin(rec.width/2,rec.height/2);
+
             shape.setFillColor(sf::Color::Red);
             shape.setOutlineColor(sf::Color::Yellow);
             shape.setOutlineThickness(2);
 
             setPosition(X,Y);
-
         };
 
         void setPosition(int X,int Y)
         {
             shape.setPosition(Y*decalage_x+X*decalage_y,Y*decalage_y/2+X*decalage_x/2);
+
+            std::string text= std::to_string(X) + " " + std::to_string(Y);
+            txt.setString(text);
+            sf::FloatRect rec = txt.getLocalBounds();
+            txt.setOrigin(rec.width/2,rec.height/2);
+
             txt.setPosition(shape.getPosition());
         };
 
@@ -116,9 +118,19 @@ class Rotate_Hexa
             //b = pos.y
             //Y = -x⁻³y³X+x⁻³y²a-2x⁻²yb+x⁻¹a
             //X = x⁻²y²X-x⁻²ya+2x⁻¹b
+            int a = pos.x + r_hauteur/2;
+            int b = pos.y + r_hauteur/4;
+            float x =(2*b*decalage_x - a*decalage_y)/(decalage_x*decalage_x - decalage_y*decalage_y);
+            float y= (2*b-x*decalage_x)/decalage_y;
 
-            pos.x = 0;
-            pos.y = 0;
+            x=(x<0)?x-1:x;
+            y=(y<0)?y-1:y;
+
+            std::cout<<x<<" "<<y<<std::endl;
+
+
+            pos.x = x;
+            pos.y = y;
             return pos;
         }
 
@@ -150,8 +162,8 @@ int main(int argc,char* argv[])
     cout<<"T:"<<T->x<<" "<<T->y<<endl;*/
 
     std::vector<Rotate_Hexa*> hexs;
-    for(int x=-0;x<10;++x)
-        for(int y=-0;y<10;++y)
+    for(int x=-10;x<20;++x)
+        for(int y=-10;y<20;++y)
             hexs.emplace_back(new Rotate_Hexa(x,y));
 
     Rotate_Hexa mouse_hex(-2,-2);
@@ -178,9 +190,9 @@ int main(int argc,char* argv[])
             window.draw(hex->txt);
         }
         sf::Vector2i pos(Rotate_Hexa::globleToLocal(sf::Mouse::getPosition(window)));
-
         mouse_hex.setPosition(pos.x,pos.y);
         window.draw(mouse_hex.shape);
+        window.draw(mouse_hex.txt);
         // Update the window
         window.display();
     }
