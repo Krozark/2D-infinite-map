@@ -56,8 +56,16 @@ class Hexa
 
 };
 
-float r_hauteur;
 sf::Font font;
+
+float n = 50.0;
+float sin_75 = sin(75*PI/180)*n;
+float sin_15 = sin(15*PI/180)*n;
+float sin_45 = sin(45*PI/180)*n;
+float r_hauteur = sin_15+sin_45+sin_75;
+
+float decalage_x = (sin_45-sin_15);
+float decalage_y = (sin_75+sin_45);
 
 class Rotate_Hexa
 {
@@ -65,10 +73,6 @@ class Rotate_Hexa
         Rotate_Hexa(int X,int Y)
         {
             shape.setPointCount(6);
-            float n = 50.0;
-            float sin_75 = sin(75*PI/180)*n;
-            float sin_15 = sin(15*PI/180)*n;
-            float sin_45 = sin(45*PI/180)*n;
 
             shape.setPoint(0,sf::Vector2f(0,(sin_15+sin_75)/2));
             shape.setPoint(1,sf::Vector2f(sin_15,sin_15/2));
@@ -77,7 +81,6 @@ class Rotate_Hexa
             shape.setPoint(4,sf::Vector2f(sin_75+sin_45,(sin_75+sin_45)/2));
             shape.setPoint(5,sf::Vector2f(sin_45,(sin_15+sin_75+sin_45)/2));
             
-            r_hauteur = sin_15+sin_45+sin_75;
             shape.setOrigin(r_hauteur/2,r_hauteur/2);
 
 
@@ -87,17 +90,30 @@ class Rotate_Hexa
             txt.setCharacterSize(20);
             txt.setColor(sf::Color::White);
             txt.setOrigin(30,40);
-            shape.setFillColor(sf::Color(random(0,255),random(0,255),random(0,255)));
+            shape.setFillColor(sf::Color::Red);
+            shape.setOutlineColor(sf::Color::Yellow);
+            shape.setOutlineThickness(2);
 
-            float decalage_x = (sin_45-sin_15);
-            float decalage_y = (sin_75+sin_45);
-    
-            shape.setPosition(300+Y*decalage_x+X*decalage_y,300+Y*decalage_y/2+X*decalage_x/2);
+            setPosition(X,Y);
+
+        };
+
+        void setPosition(int X,int Y)
+        {
+            shape.setPosition(Y*decalage_x+X*decalage_y,Y*decalage_y/2+X*decalage_x/2);
             txt.setPosition(shape.getPosition());
+        };
 
-            //shape.setFillColor(sf::Color::White);
+        static sf::Vector2i globleToLocal(sf::Vector2i pos)
+        {
+            //Y = Y*decalage_x+X*decalage_y
+            //X = Y*decalage_y/2+X*decalage_x/2;
 
+            pos.x /= 100;
+            pos.y /= 100;
+            return pos;
         }
+
         sf::ConvexShape shape;
         sf::Text txt;
 
@@ -129,6 +145,10 @@ int main(int argc,char* argv[])
         for(int y=-0;y<10;++y)
             hexs.emplace_back(new Rotate_Hexa(x,y));
 
+    Rotate_Hexa mouse_hex(-2,-2);
+    mouse_hex.shape.setFillColor(sf::Color(255,255,255,175));
+
+
      // Create the main window
     sf::RenderWindow window(sf::VideoMode(1800, 1000), "SFML window");
     while (window.isOpen())
@@ -148,6 +168,10 @@ int main(int argc,char* argv[])
             window.draw(hex->shape);
             window.draw(hex->txt);
         }
+        sf::Vector2i pos(Rotate_Hexa::globleToLocal(sf::Mouse::getPosition(window)));
+
+        mouse_hex.setPosition(pos.x,pos.y);
+        window.draw(mouse_hex.shape);
         // Update the window
         window.display();
     }
