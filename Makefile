@@ -1,6 +1,6 @@
 export CC = g++
 INCPATH = 
-LIBS = 
+LIBS = -lsfml-graphics 
 export DEFINES = 
 export FLAGS = -g -std=c++0x $(INCPATH) $(LIBS) $(DEFINES)
 export TOP = $(CURDIR)

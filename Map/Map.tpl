@@ -8,10 +8,10 @@ namespace map
     template<class T>
     Map<T>::~Map()
     {
-        /*auto end = areas.end();
+        auto end = areas.end();
         for(auto begin = areas.begin();begin!=end;++begin)
             if (begin->second)
-                delete (begin->second);*/
+                delete (begin->second);
     };
 
 
