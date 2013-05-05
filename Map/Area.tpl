@@ -11,7 +11,7 @@ namespace map
             for(int j=0;j<MAP_AREA_SIZE;++j)
                 tiles[i][j] = new T(x_min+i,y_min+j);
     };
-
+;
     template<class T>
     Area<T>::~Area()
     {

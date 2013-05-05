@@ -8,6 +8,8 @@
 #include "Tile.hpp"
 #include "std_hash.hpp"
 
+#include <SFML/Graphics.hpp>
+
 
 /* Store all the map (Areas)
  * and allaow you to load/unload piece of the map on the fly +
@@ -27,6 +29,14 @@ namespace map
             Map& operator=(const Map&) = delete;
 
             T* operator()(const int& X,const int& Y);
+
+            void draw(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
+
+
+            template <typename ... Args>
+            inline static sf::Vector2i toLocal(const Args&... args){
+                return T::toLocal(args...);
+            };
 
         private:
             std::unordered_map<std::pair<int,int>,Area<T>*> areas;
