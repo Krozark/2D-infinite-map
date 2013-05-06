@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 
-/* the minimum unit for a map (a cell) */
+/* the minimum unit for a map (a cell) 2D Iso Hexagone */
 namespace map
 {
     class TileIsoHexa

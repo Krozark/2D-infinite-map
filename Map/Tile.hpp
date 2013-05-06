@@ -19,8 +19,6 @@ namespace map
 
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default) const = 0;
 
-            const static sf::Vector2f size;
-
         private:
             int x,y;
         //sprite

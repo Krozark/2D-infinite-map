@@ -22,7 +22,12 @@ namespace map
             Area& operator=(const Area&) = delete;
 
             /* X,Y = map coords*/
-            inline T* operator()(const int& X,const int& Y) const {return tiles[X][Y];};
+            inline T* operator()(const int& X,const int& Y) const {
+                clock.restart();
+                return tiles[X][Y];
+            };
+
+            sf::Clock clock;
 
         private:
             T* tiles[MAP_AREA_SIZE][MAP_AREA_SIZE];
