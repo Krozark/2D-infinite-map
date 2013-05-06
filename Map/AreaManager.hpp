@@ -32,7 +32,7 @@ namespace map
             std::mutex mutex;
             std::thread thread;
 
-            const float timeout;
+            const sf::Time timeout;
 
             volatile bool running;
     };
