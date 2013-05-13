@@ -5,7 +5,7 @@
 namespace map
 {
     template<class T>
-        Map<T>::Map() : _last_area(0) 
+        Map<T>::Map() : _last_area(0), areaManager(*this)
     {
         areaManager.start(120);
     };
@@ -23,6 +23,7 @@ namespace map
     template<class T>
         T* Map<T>::operator()(const int& X,const int& Y)
         {
+            mutex.lock();
             /* area coord */
             const int area_x = (X<0)?((X-MAP_AREA_SIZE+1)/MAP_AREA_SIZE):(X/MAP_AREA_SIZE);
             const int area_y = (Y<0)?((Y-MAP_AREA_SIZE+1)/MAP_AREA_SIZE):(Y/MAP_AREA_SIZE);
@@ -33,7 +34,10 @@ namespace map
 
 
             if(_last_area and _last_area_X == area_x and _last_area_Y == area_y)
+            {
+                mutex.unlock();
                 return (*_last_area)(areaX,areaY);
+            }
 
             auto key = std::make_pair(area_x,area_y);
 
@@ -46,7 +50,9 @@ namespace map
             {
                 _last_area = new Area<T>(_last_area_X, _last_area_Y);
                 areas[key] = _last_area;
+                areaManager.add(_last_area);
             }
+            mutex.unlock();
             return (*_last_area)(areaX,areaY);
         };
 
@@ -55,6 +61,8 @@ namespace map
         template<>
         void Map<TileIsoHexa>::draw(sf::RenderTarget& target, sf::RenderStates states)
         {
+            mutex.lock();
+
             sf::Vector2u target_size = target.getSize();
 
             sf::Vector2f __top = target.mapPixelToCoords(sf::Vector2i(0,0));
@@ -96,7 +104,7 @@ namespace map
                     c_x -= dec_x;
                 }
             }
-
+            mutex.unlock();
         };
 
        
@@ -104,6 +112,8 @@ namespace map
         template <class T>
         void Map<T>::draw(sf::RenderTarget& target, sf::RenderStates states)
         {
+            mutex.lock();
+
             sf::Vector2u target_size = target.getSize();
 
             sf::Vector2f __top = target.mapPixelToCoords(sf::Vector2i(0,0));
@@ -118,16 +128,45 @@ namespace map
                 for(int y=top.y;y<=bottom.y;++y)
                     (*this)(x,y)->draw(target,states);
             }
+
+            mutex.unlock();
         };
         
         template<class T>
         void Map<T>::draw_areas(sf::RenderTarget& target, sf::RenderStates states)
         {
+            mutex.lock();
+
             auto end = areas.end();
             for(auto begin = areas.begin();begin != end;++begin)
             {
                 begin->second->draw(target,states);
             }
+
+            mutex.unlock();
+        };
+
+        template<class T>
+        bool Map<T>::remove(Area<T>* area)
+        {
+            if(mutex.try_lock())
+            {
+                auto end = areas.end();
+                for(auto begin = areas.begin();begin != end;++begin)
+                {
+                    Area<T>* current = begin->second;
+                    if(current == area)
+                    {
+                        areas.erase(begin);
+                        delete current;
+                        break;
+                    }
+                }   
+         
+                mutex.unlock();
+                return true;
+            }
+            return false;
         };
 
 };

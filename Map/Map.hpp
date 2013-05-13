@@ -40,13 +40,17 @@ namespace map
             };
 
         private:
+            friend AreaManager<T>;
             std::unordered_map<std::pair<int,int>,Area<T>*> areas;
             AreaManager<T> areaManager;
-
             /* To optimise operator(int X, int Y) acces */
             Area<T>* _last_area;
             int _last_area_X;
             int _last_area_Y;
+
+            bool remove(Area<T>* area);
+
+            std::mutex mutex;
 
     };
 };
