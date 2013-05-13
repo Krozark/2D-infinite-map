@@ -15,7 +15,7 @@ namespace map
     class AreaManager
     {
         public:
-            AreaManager(const float sec_timeout);
+            AreaManager();
             ~AreaManager();
 
             AreaManager(const AreaManager&) = delete;
@@ -24,17 +24,19 @@ namespace map
             void add(Area<T*> area);
             void remove(Area<T*> area);
 
-            void run();
+            void start(const float time=120);
             inline void stop(){running=false;};
+
+            inline void setTimeout(const float time){this->timeout=time;};
 
         private:
             std::vector<Area<T>*> areas;
             std::mutex mutex;
             std::thread thread;
-
             const sf::Time timeout;
-
             volatile bool running;
+
+            void run();
     };
 
 };

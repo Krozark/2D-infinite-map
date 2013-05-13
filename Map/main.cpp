@@ -28,7 +28,7 @@ int main(int argc,char* argv[])
 
 
      // Create the main window
-    sf::RenderWindow window(sf::VideoMode(1800, 1000), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
     while (window.isOpen())
     {
          // Process events

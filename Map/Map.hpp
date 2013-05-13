@@ -7,6 +7,7 @@
 #include "Area.hpp"
 #include "Tile.hpp"
 #include "std_hash.hpp"
+#include "AreaManager.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -31,7 +32,7 @@ namespace map
             T* operator()(const int& X,const int& Y);
 
             void draw(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
-
+            void draw_areas(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
 
             template <typename ... Args>
             inline static sf::Vector2i toLocal(const Args&... args){
@@ -40,6 +41,7 @@ namespace map
 
         private:
             std::unordered_map<std::pair<int,int>,Area<T>*> areas;
+            AreaManager<T> areaManager;
 
             /* To optimise operator(int X, int Y) acces */
             Area<T>* _last_area;

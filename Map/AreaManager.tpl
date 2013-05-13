@@ -1,7 +1,7 @@
 namespace map
 {
     template<class T>
-    AreaManager<T>::AreaManager(const float time): timeout(time)
+    AreaManager<T>::AreaManager()
     {};
 
     template<class T>
@@ -30,6 +30,13 @@ namespace map
     };
 
     template<class T>
+    AreaManager<T>::start(const float time)
+    {
+        timeout = time;
+        thread = std::thread(&AreaManager<T>::run,this);
+    }
+
+    template<class T>
     AreaManager<T>::run()
     {
         while(running)
@@ -48,7 +55,7 @@ namespace map
 
             }
             mutex.unlock();
-            //sleep;
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
         };
     };
 };

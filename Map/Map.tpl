@@ -7,6 +7,7 @@ namespace map
     template<class T>
         Map<T>::Map() : _last_area(0) 
     {
+        areaManager.start(120);
     };
 
     template<class T>
@@ -118,6 +119,15 @@ namespace map
                     (*this)(x,y)->draw(target,states);
             }
         };
-
+        
+        template<class T>
+        Map<T>::draw_areas(sf::RenderTarget& target, sf::RenderStates states)
+        {
+            auto end = areas.end();
+            for(auto begin = areas.begin();begin != end;++begin)
+            {
+                begin.second->draw(taget,states);
+            }
+        };
 
 };
