@@ -47,6 +47,7 @@ int main(int argc,char* argv[])
         carte(pos.x,pos.y);
 
         carte.draw_areas(window); 
+        carte.draw(window);
 
         mouse_hex.setPositionShape(pos.x,pos.y);
         mouse_hex.draw(window);

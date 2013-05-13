@@ -61,8 +61,6 @@ namespace map
         template<>
         void Map<TileIsoHexa>::draw(sf::RenderTarget& target, sf::RenderStates states)
         {
-            mutex.lock();
-
             sf::Vector2u target_size = target.getSize();
 
             sf::Vector2f __top = target.mapPixelToCoords(sf::Vector2i(0,0));
@@ -104,7 +102,6 @@ namespace map
                     c_x -= dec_x;
                 }
             }
-            mutex.unlock();
         };
 
        
@@ -112,8 +109,6 @@ namespace map
         template <class T>
         void Map<T>::draw(sf::RenderTarget& target, sf::RenderStates states)
         {
-            mutex.lock();
-
             sf::Vector2u target_size = target.getSize();
 
             sf::Vector2f __top = target.mapPixelToCoords(sf::Vector2i(0,0));
@@ -128,8 +123,6 @@ namespace map
                 for(int y=top.y;y<=bottom.y;++y)
                     (*this)(x,y)->draw(target,states);
             }
-
-            mutex.unlock();
         };
         
         template<class T>

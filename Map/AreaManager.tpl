@@ -1,5 +1,3 @@
-#include <iostream>
-
 namespace map
 {
     template<class T>
@@ -43,7 +41,6 @@ namespace map
     template<class T>
     void AreaManager<T>::run()
     {
-        std::cout<<"run()"<<std::endl;
         while(running)
         {
             mutex.lock();
@@ -51,7 +48,6 @@ namespace map
             for(auto i=areas.begin();i != end;++i)
             {
                 Area<T>* current = (*i);
-                std::cout<<current<<" "<<current->clock.getElapsedTime().asSeconds()<<std::endl;
                 
                 if(current->clock.getElapsedTime()>=timeout)
                 {
@@ -67,6 +63,5 @@ namespace map
             mutex.unlock();
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
-        std::cout<<"end run()"<<std::endl;
     };
 };
