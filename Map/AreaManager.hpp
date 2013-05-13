@@ -2,6 +2,7 @@
 #define AREAMANAGER_HPP
 
 #include <thread>
+#include <mutex>
 #include <vector>
 
 #include "Area.hpp"
@@ -21,8 +22,8 @@ namespace map
             AreaManager(const AreaManager&) = delete;
             AreaManager& operator=(const AreaManager&) = delete;
 
-            void add(Area<T*> area);
-            void remove(Area<T*> area);
+            void add(Area<T>* area);
+            void remove(Area<T>* area);
 
             void start(const float time=120);
             inline void stop(){running=false;};
@@ -33,7 +34,7 @@ namespace map
             std::vector<Area<T>*> areas;
             std::mutex mutex;
             std::thread thread;
-            const sf::Time timeout;
+            sf::Time timeout;
             volatile bool running;
 
             void run();

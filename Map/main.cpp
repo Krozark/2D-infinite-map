@@ -28,7 +28,7 @@ int main(int argc,char* argv[])
 
 
      // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "SFML window");
     while (window.isOpen())
     {
          // Process events
@@ -41,10 +41,12 @@ int main(int argc,char* argv[])
         }
         // Clear screen
         window.clear();
-
-        carte.draw(window); 
-
+        //map cord mousse
         sf::Vector2i pos(carte.toLocal(sf::Mouse::getPosition(window)));
+
+        carte(pos.x,pos.y);
+
+        carte.draw_areas(window); 
 
         mouse_hex.setPositionShape(pos.x,pos.y);
         mouse_hex.draw(window);

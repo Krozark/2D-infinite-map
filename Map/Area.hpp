@@ -10,6 +10,8 @@
  
 namespace map
 {
+
+    template<class T> class AreaManager;
     /* T is a tile class */
     template<class T>
     class Area
@@ -32,6 +34,7 @@ namespace map
 
 
         private:
+            friend class AreaManager<T>;
             T* tiles[MAP_AREA_SIZE][MAP_AREA_SIZE];
             sf::Clock clock;
 

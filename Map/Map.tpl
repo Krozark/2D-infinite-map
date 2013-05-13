@@ -32,7 +32,7 @@ namespace map
             const int areaY = Y & (MAP_AREA_SIZE -1);
 
 
-            if(_last_area_X == area_x and _last_area_Y == area_y)
+            if(_last_area and _last_area_X == area_x and _last_area_Y == area_y)
                 return (*_last_area)(areaX,areaY);
 
             auto key = std::make_pair(area_x,area_y);
@@ -121,12 +121,12 @@ namespace map
         };
         
         template<class T>
-        Map<T>::draw_areas(sf::RenderTarget& target, sf::RenderStates states)
+        void Map<T>::draw_areas(sf::RenderTarget& target, sf::RenderStates states)
         {
             auto end = areas.end();
             for(auto begin = areas.begin();begin != end;++begin)
             {
-                begin.second->draw(taget,states);
+                begin->second->draw(target,states);
             }
         };
 

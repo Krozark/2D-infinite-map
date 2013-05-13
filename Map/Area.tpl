@@ -26,7 +26,7 @@ namespace map
     }
 
     template<class T>
-    Area<T>::draw(sf::RenderTarget& target, sf::RenderStates states)
+    void Area<T>::draw(sf::RenderTarget& target, sf::RenderStates states)
     {
         for(int i=0;i<MAP_AREA_SIZE;++i)
             for(int j=0;j<MAP_AREA_SIZE;++j)

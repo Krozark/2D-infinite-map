@@ -8,7 +8,7 @@ namespace map
     AreaManager<T>::~AreaManager(){};
 
     template<class T>
-    AreaManager<T>::add(Area<T*> area)
+    void AreaManager<T>::add(Area<T>* area)
     {
         mutex.lock();
         areas.emplace_back(area);
@@ -16,7 +16,7 @@ namespace map
     };
 
     template<class T>
-    AreaManager<T>::remove(Area<T>* area)
+    void AreaManager<T>::remove(Area<T>* area)
     {
         mutex.lock();
         auto end = areas.end();
@@ -30,14 +30,15 @@ namespace map
     };
 
     template<class T>
-    AreaManager<T>::start(const float time)
+    void AreaManager<T>::start(const float time)
     {
-        timeout = time;
-        thread = std::thread(&AreaManager<T>::run,this);
+        timeout = sf::seconds(time);
+        void (AreaManager<T>::*f)(void) = &AreaManager<T>::run;
+        thread = std::thread(f,this);
     }
 
     template<class T>
-    AreaManager<T>::run()
+    void AreaManager<T>::run()
     {
         while(running)
         {
@@ -45,7 +46,7 @@ namespace map
             auto end = areas.end();
             for(auto i=areas.begin();i != end;++i)
             {
-                Area<T>& current = (*i);
+                Area<T>& current = *(*i);
                 
                 if(current.clock.getElapsedTime()>=timeout)
                 {
