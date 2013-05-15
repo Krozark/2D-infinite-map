@@ -26,9 +26,10 @@ namespace map
             static sf::Font font;
 
              void setPositionShape(const int& X,const int& Y);
+             void setTexture(const sf::Texture *texture,bool resetRect=false);
 
         protected:
-            int x,y;
+            //int x,y;
             sf::ConvexShape shape;
             sf::Text txt;
 

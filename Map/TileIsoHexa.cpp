@@ -21,7 +21,7 @@ namespace map
 {
     sf::Font TileIsoHexa::font;
 
-    TileIsoHexa::TileIsoHexa(const int& X, const int& Y) : x(X), y(Y)
+    TileIsoHexa::TileIsoHexa(const int& X, const int& Y) /*: x(X), y(Y)*/
     {
         shape.setPointCount(6);
         shape.setPoint(0,sf::Vector2f(0,(sin_15+sin_75)/2));
