@@ -50,6 +50,7 @@ namespace map
             if (not _last_area)
             {
                 _last_area = new Area<T>(_last_area_X, _last_area_Y);
+                //AreaLoader<T>::loadFromFile(*_last_area,_last_area_X,_last_area_Y);
                 areas[key] = _last_area;
                 areaManager.add(_last_area);
             }

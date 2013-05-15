@@ -1,3 +1,5 @@
+#include "AreaLoader.hpp"
+
 namespace map
 {
     /* coords to convert using MAP_AREA_SIZE */
@@ -12,7 +14,8 @@ namespace map
             for(int j=0;j<MAP_AREA_SIZE;++j)
                 tiles[i][j] = new T(x_min+i,y_min+j);
 
-        //TODO Get Tile from ???
+        AreaLoader<T>::loadFromFile(*this,X,Y);
+
     };
 ;
     template<class T>

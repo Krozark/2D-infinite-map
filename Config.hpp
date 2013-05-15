@@ -23,8 +23,8 @@ namespace cfg
     };
 };
 
-std::string cfg::Config::tex_path("./data/textures");
-std::string cfg::Config::map_path("./data/map");
+std::string cfg::Config::tex_path("./data/textures/");
+std::string cfg::Config::map_path("./data/map/");
 rm::ResourceManager<std::string,sf::Texture> textureManager;
 
 

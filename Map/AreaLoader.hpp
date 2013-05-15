@@ -15,8 +15,11 @@ namespace map
         AreaLoader(const AreaLoader&) = delete;
         AreaLoader& operator=(const AreaLoader&) = delete;
 
-        static void loadFromNetwork(Area<T>& area,int X,int Y);//X.Y in MapCoord
-        static void LoadFromFile(Area<T>& area,int X,int Y);//X,Y in mapCoord
+        public:
+            //X,Y cooord of Area
+            static void loadFromNetwork(Area<T>& area,const int& X,const int& Y);
+            //X,Y cooord of Area
+            static void loadFromFile(Area<T>& area,const int& X,const int& Y);
     };
 };
 

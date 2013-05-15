@@ -1,4 +1,8 @@
-x y tex:"texture_name.png"
+#comment
+#x y tex:"texture_name.png"
+#tex:"" => texture
+#obj:id => object with id id
+
 0 0 
 0 1
 0 2
