@@ -43,9 +43,9 @@ This class don,t have to be use, but have to be custom (load/unload). It split t
 map::AreaManager>T>
 --------------
 
-This class delete the Areas that are not use since a timout (120 sec is default) to free memory.
+This class delete the Areas that are not use since a timeout (120 sec is default) to free memory.
 
-You d'ont have to use this class, it is use in Map<T>.
+You don't have to use this class, it is use in Map<T>.
 
 
 map::AreaLoader<T>
@@ -65,16 +65,16 @@ You can make your own, but use Tile as base.
 cfg::Config
 ------
 
-This class is juste regroupmenet of static config, you can modify values as you want.
+This class is just a regroupement of static config. You can modify this values as you want.
 
 
 Datas
 =====
 
-In this repertory you will fin some datas for test.
+In this repertory you will find some datas for test (map files, and textures)
 
 
-map
+data/map
 ---
 You have a "format" file that define the current file format to use to load Areu from file, and a empty file that just have defaujt coords.
 
@@ -96,6 +96,12 @@ Acctualy it suport:
 * obj:id (TODO)
 
 tex define the texture to use on the tile. If texture can't be load, default.png is use. All the texture have to be put under cfg::Config::tex_path directory (texture name can contain  subdirectory path).
+
+
+data/textures
+-------------
+
+Some textures for the tests.
 
 
 
