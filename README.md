@@ -1,9 +1,11 @@
-2D-infinite-map
+2D-Infinite-map
 ===============
 
-A module that allow you to use a infinite map in a 2D game.
+A module that allow you to use a infinite map in a 2D game, with auto load/free from file/network.
 
 It use Template for flexibilitie.
+
+The map is split in Area, and each area can be summery as a Tile[MAP_AREA_SIZE][MAP_AREA_SIZE].
 
 You can change the Area size (MAP_AREA_SIZE)
 
@@ -16,14 +18,17 @@ Test on Ubuntu x32/x64.
 Depends:
 --------
 
-* ResourceManager<K,T>
+* ResourceManager\<K,T\>
     * Can be find here: https://github.com/Krozark/ResourceManager
 
 
 Class
 =====
 
-map::Map<T>
+T is a Tile class.
+
+
+map::Map\<T\>
 ------
 
 T is a tile class.
@@ -31,16 +36,16 @@ T is a tile class.
 This is the class that you will use. Use the (int,int) operator to get the tile at this position (can be negative)
 
 
-map::Area<T>
+map::Area\<T\>
 -------
 
 T is a tile class.
 
-This class don,t have to be use, but have to be custom (load/unload). It split the word into MAP_AREA_SIZE*MAP_AREA_SIZE zone, and allow you to load/unload this o the fly.
+This class don't have to be use, but have to be custom (load/unload). It split the word into MAP_AREA_SIZE*MAP_AREA_SIZE zone, and allow you to load/unload this o the fly using AreaLoader/Manager.
 
 
 
-map::AreaManager>T>
+map::AreaManager\<T\>
 --------------
 
 This class delete the Areas that are not use since a timeout (120 sec is default) to free memory.
@@ -48,7 +53,7 @@ This class delete the Areas that are not use since a timeout (120 sec is default
 You don't have to use this class, it is use in Map<T>.
 
 
-map::AreaLoader<T>
+map::AreaLoader\<T\>
 -------------
 
 This class load Area from file (see data/map/0,0 for exemple) or from network (TODO).
