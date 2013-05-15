@@ -44,7 +44,7 @@ int main(int argc,char* argv[])
         //map cord mousse
         sf::Vector2i pos(carte.toLocal(sf::Mouse::getPosition(window)));
 
-        carte(pos.x,pos.y);
+        //carte(pos.x,pos.y);
 
         carte.draw(window);
 

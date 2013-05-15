@@ -11,6 +11,11 @@ You can change it in Area.hpp
 
 Test on Ubuntu x32/x64.
 
+Depends:
+--------
+
+ResourceManager<K,T> : can be find here:
+* https://github.com/Krozark/ResourceManager
 
 
 

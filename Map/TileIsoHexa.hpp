@@ -29,12 +29,9 @@ namespace map
              void setTexture(const sf::Texture *texture,bool resetRect=false);
 
         protected:
-            //int x,y;
             sf::ConvexShape shape;
             sf::Text txt;
 
-
-            
         //sprite
     };
 };
