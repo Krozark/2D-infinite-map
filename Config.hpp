@@ -20,12 +20,17 @@ namespace cfg
         static std::string tex_path;
         static std::string map_path;
         static rm::ResourceManager<std::string,sf::Texture> textureManager;
+
+        static void clear()
+        {
+            textureManager.clear();
+        };
     };
 };
 
 std::string cfg::Config::tex_path("./data/textures/");
 std::string cfg::Config::map_path("./data/map/");
-rm::ResourceManager<std::string,sf::Texture> textureManager;
+rm::ResourceManager<std::string,sf::Texture> cfg::Config::textureManager;
 
 
 #endif

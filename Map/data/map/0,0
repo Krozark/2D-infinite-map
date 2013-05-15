@@ -1,4 +1,4 @@
-0 0 tex:"bg.png"
+0 0 tex:"bg.png" obj:42
 0 1 tex:"bg2.png"
 0 2 tex:"bg3.png"
 0 3 tex:"water.png"

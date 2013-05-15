@@ -45,5 +45,7 @@ int main(int argc,char* argv[])
         window.display();
     }
 
+    cfg::Config::clear();
+
     return 0;
 };

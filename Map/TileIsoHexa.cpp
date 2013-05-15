@@ -33,7 +33,7 @@ namespace map
 
         shape.setOrigin(r_hauteur/2,r_hauteur/4);
 
-        shape.setFillColor(sf::Color::Red);
+        //shape.setFillColor(sf::Color::Red);
         shape.setOutlineColor(sf::Color::Yellow);
         shape.setOutlineThickness(2);
 
@@ -79,6 +79,11 @@ namespace map
 
          txt.setPosition(shape.getPosition());
 
+    };
+
+    void TileIsoHexa::setTexture(const sf::Texture *texture,bool resetRect)
+    {
+            shape.setTexture(texture,resetRect);
     };
 
 };
