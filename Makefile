@@ -1,5 +1,5 @@
 export CC = g++
-INCPATH =
+INCPATH = -I"$(CURDIR)/../ResourceManager/" -I"$(CURDIR)"
 LIBS = -lpthread  -lsfml-graphics 
 export DEFINES = 
 export FLAGS = -g -std=c++0x $(INCPATH) $(LIBS) $(DEFINES)

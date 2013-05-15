@@ -1,10 +1,11 @@
 #ifndef MAP_AREA_HPP
 #define MAP_AREA_HPP
 
-#include "Tile.hpp"
 #include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
 
 /* regroupe the tile of a common zone */
+/* T is a tile class */
 
 #define MAP_AREA_SIZE 8//2 4 8 16 32 64 128
  
@@ -12,7 +13,8 @@ namespace map
 {
 
     template<class T> class AreaManager;
-    /* T is a tile class */
+    template<class T> class AreaLoader;
+
     template<class T>
     class Area
     {
@@ -35,6 +37,7 @@ namespace map
 
         private:
             friend class AreaManager<T>;
+            friend class AreaLoader<T>;
             T* tiles[MAP_AREA_SIZE][MAP_AREA_SIZE];
             sf::Clock clock;
 

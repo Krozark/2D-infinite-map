@@ -1,6 +1,7 @@
-#include <iostream>
+//#include <iostream>
 
 #include "TileIsoHexa.hpp"
+//#include "AreaLoader.hpp"
 
 namespace map
 {

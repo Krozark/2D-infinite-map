@@ -1,15 +1,5 @@
-#include <iostream>
-
-
-#include <math.h>
-
 #include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
-
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-#include <vector>
 
 #include "Map.hpp"
 #include "TileIsoHexa.hpp"
