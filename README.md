@@ -6,7 +6,9 @@ A module that allow you to use a infinite map in a 2D game.
 It use Template for flexibilitie.
 
 You can change the Area size (MAP_AREA_SIZE)
-default #define MAP_AREA_SIZE 8//2 4 8 16 32 64 128
+
+Default: #define MAP_AREA_SIZE 8//2 4 8 16 32 64 128
+
 You can change it in Area.hpp
 
 Test on Ubuntu x32/x64.
@@ -14,9 +16,8 @@ Test on Ubuntu x32/x64.
 Depends:
 --------
 
-ResourceManager<K,T> : can be find here:
-* https://github.com/Krozark/ResourceManager
-
+* ResourceManager<K,T>
+    * Can be find here: https://github.com/Krozark/ResourceManager
 
 
 Class
