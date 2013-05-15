@@ -1,6 +1,6 @@
 #include "TileIsoHexa.hpp"
 
-#include <iostream>
+#include <string>
 #include <math.h>
 
 
