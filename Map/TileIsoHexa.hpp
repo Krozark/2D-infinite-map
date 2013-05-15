@@ -23,6 +23,9 @@ namespace map
             static sf::Vector2i toLocal(const int& X,const int& Y);
             static sf::Vector2i toLocal(const sf::Vector2i& pos);
 
+            static sf::Vector2f toGlobal(const int& X,const int& Y);
+            static sf::Vector2f toGlobal(const sf::Vector2i& pos);
+
             static sf::Font font;
 
              void setPositionShape(const int& X,const int& Y);

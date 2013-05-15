@@ -34,7 +34,7 @@ namespace map
         shape.setOrigin(r_hauteur/2,r_hauteur/4);
 
         //shape.setFillColor(sf::Color::Red);
-        shape.setOutlineColor(sf::Color::Yellow);
+        shape.setOutlineColor(sf::Color::Black);
         shape.setOutlineThickness(2);
 
         txt.setFont(font);
@@ -66,11 +66,22 @@ namespace map
     sf::Vector2i TileIsoHexa::toLocal(const sf::Vector2i& pos)
     {
         return TileIsoHexa::toLocal(pos.x,pos.y);
+    };
+
+    sf::Vector2f TileIsoHexa::toGlobal(const int& X,const int& Y)
+    {
+        return sf::Vector2f(Y*decalage_x+X*decalage_y,Y*decalage_y/2+X*decalage_x/2);
+    };
+
+    sf::Vector2f TileIsoHexa::toGlobal(const sf::Vector2i& pos)
+    {
+        return toGlobal(pos.x,pos.y);
     }
+
 
     void TileIsoHexa::setPositionShape(const int& X,const int& Y)
     {
-         shape.setPosition(Y*decalage_x+X*decalage_y,Y*decalage_y/2+X*decalage_x/2);
+         shape.setPosition(toGlobal(X,Y));
 
          std::string text= std::to_string(X) + " " + std::to_string(Y);
          txt.setString(text);

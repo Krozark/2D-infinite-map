@@ -39,6 +39,11 @@ namespace map
                 return T::toLocal(args...);
             };
 
+            template <typename ... Args>
+            inline static sf::Vector2f toGlobal(const Args&... args){
+                return T::toGlobal(args...);
+            };
+
         private:
             friend AreaManager<T>;
             std::unordered_map<std::pair<int,int>,Area<T>*> areas;
