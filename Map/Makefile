@@ -9,7 +9,7 @@ all: main.exe
 	@cp $@ "$(OBJ_DIR)"
 
 
-main.exe: main.cpp Tile.hpp Tile.o TileIsoHexa.o Area.hpp Map.hpp
+main.exe: main.cpp Tile.hpp Tile.o TileIsoHexa.o Area.hpp Map.hpp AreaManager.hpp AreaLoader.hpp
 	$(CC) $^ $(FLAGS) -o $@
 
 
