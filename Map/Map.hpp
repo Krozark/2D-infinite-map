@@ -57,6 +57,8 @@ namespace map
 
             std::mutex mutex;
 
+            Area<T>& getOrCreateArea(const int& X,const int& Y);
+
     };
 };
 

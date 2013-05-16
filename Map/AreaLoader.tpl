@@ -46,8 +46,10 @@ namespace map
                 {
                     //remove ' ' before type 
                     type.erase(0,1);
+                    if(type =="")
+                        continue;
                     //add to area what is needed
-                    if(type == "tex")
+                    else if(type == "tex")
                     {
                         //get values
                         std::string value;

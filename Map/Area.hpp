@@ -34,6 +34,9 @@ namespace map
 
             void draw(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
 
+            static sf::Vector2i toLocal(const int& X,const int& Y);
+            static sf::Vector2i toLocal(const sf::Vector2i& pos);
+
 
         private:
             friend class AreaManager<T>;

@@ -34,9 +34,25 @@ namespace map
     template<class T>
     void Area<T>::draw(sf::RenderTarget& target, sf::RenderStates states)
     {
-        for(int i=0;i<MAP_AREA_SIZE;++i)
-            for(int j=0;j<MAP_AREA_SIZE;++j)
-                tiles[i][j]->draw(target,states);
+        clock.restart();
+        for(int y=0;y<MAP_AREA_SIZE;++y)
+            for(int x=0;x<MAP_AREA_SIZE;++x)
+                tiles[y][x]->draw(target,states);
                 
     };
+
+    template<class T>
+    sf::Vector2i Area<T>::toLocal(const int& X,const int& Y)
+    {
+        return sf::Vector2i(
+            (X<0)?((X-MAP_AREA_SIZE+1)/MAP_AREA_SIZE):(X/MAP_AREA_SIZE),
+            (Y<0)?((Y-MAP_AREA_SIZE+1)/MAP_AREA_SIZE):(Y/MAP_AREA_SIZE));
+    };
+
+    template<class T>
+    sf::Vector2i Area<T>::toLocal(const sf::Vector2i& pos)
+    {
+        return toLocal(pos.x,pos.y);
+    }
+
 };

@@ -26,7 +26,7 @@ namespace map
             static sf::Vector2f toGlobal(const int& X,const int& Y);
             static sf::Vector2f toGlobal(const sf::Vector2i& pos);
 
-            static sf::Font font;
+             static sf::Font font;
 
              void setPosition(const int& X,const int& Y);
              void setTexture(const sf::Texture *texture,bool resetRect=false);
