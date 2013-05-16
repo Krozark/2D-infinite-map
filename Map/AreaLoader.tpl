@@ -87,15 +87,39 @@ namespace map
                         //get values
                         std::string value;
                         ss>>value;
+                        if(value[0] == '"' or value[0] == '\'')
+                            value = value.substr(1,value.size()-2);
+
+                        sf::Texture* tex = 0;
+                        if(cfg::Config::textureManager.find(value))
+                        {
+                            tex = &cfg::Config::textureManager[value];
+                        }
+                        else
+                        {
+                            sf::Texture tmp;
+                            if(not tmp.loadFromFile(cfg::Config::tex_path+value))
+                            {
+                                std::cerr<<"Failed lo load "<<value<<" on coords <"<<x<<","<<y<<"> replace with default.png in file"<<filename<<std::endl;
+                                tmp.loadFromFile(cfg::Config::tex_path+"default.png");
+                            }
+
+                            tex = &cfg::Config::textureManager.add(value,tmp);
+                        }
+
+                        area.tiles[x][y]->setSprite(*tex);
 
                         std::cerr<<"Sprite not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
                     }
-                    else if (type == "sprpos")
+                    else if (type == "spr-origine")
                     {
-                        int x,y;
-                        ss>>x>>y;
+                       float orgX,orgY;
+                       ss>>orgX>>orgY;
 
-                        std::cerr<<"Sprite position not yet makes ("<<x<<","<<y<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                       area.tiles[x][y]->setSpriteOrigine(orgX,orgY);
+
+                        std::cerr<<"Sprite origine not yet makes ("<<x<<","<<y<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+
 
                     }
                     else

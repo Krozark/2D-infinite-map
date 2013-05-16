@@ -122,4 +122,13 @@ namespace map
         }
     };
 
+    void TileIsoHexa::setSpriteOrigine(const float& X,const float&Y)
+    {
+        if(not sprite)
+            return;
+
+        sf::FloatRect rec = sprite->getLocalBounds();
+        sprite->setOrigin(rec.width*X,rec.height*Y);
+    }
+
 };

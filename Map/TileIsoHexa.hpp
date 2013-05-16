@@ -34,6 +34,8 @@ namespace map
              void setSprite(sf::Sprite*& spr);
              void setSprite(const sf::Texture& texture);
 
+             void setSpriteOrigine(const float& X,const float&Y);
+
         protected:
             sf::ConvexShape shape;
             sf::Sprite* sprite;
