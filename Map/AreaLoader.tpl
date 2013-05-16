@@ -109,7 +109,7 @@ namespace map
 
                         area.tiles[y][x]->setSprite(*tex);
 
-                        std::cerr<<"Sprite not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                        //std::cerr<<"Sprite not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
                     }
                     else if (type == "spr-origine")
                     {
@@ -118,7 +118,7 @@ namespace map
 
                        area.tiles[y][x]->setSpriteOrigine(orgX,orgY);
 
-                        std::cerr<<"Sprite origine not yet makes ("<<x<<","<<y<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                        //std::cerr<<"Sprite origine not yet makes ("<<x<<","<<y<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
 
 
                     }
