@@ -108,6 +108,7 @@ namespace map
         if(sprite)
             delete sprite;
         sprite = spr;
+        sprite.setPosition(shape.getPosition());
     };
 
     void TileIsoHexa::setSprite(const sf::Texture& tex)
@@ -115,7 +116,10 @@ namespace map
         if(sprite)
             sprite->setTexture(tex);
         else
+        {
             sprite = new sf::Sprite(tex);
+            sprite.setPosition(shape.getPosition());
+        }
     };
 
 };
