@@ -77,6 +77,10 @@ namespace map
                     {
                         std::cerr<<"Objects not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
                     }
+                    else
+                    {
+                        std::cerr<<"Unknow type ("<<type<<":"<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                    }
                 }
 
             }

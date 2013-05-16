@@ -21,7 +21,7 @@ namespace map
 {
     sf::Font TileIsoHexa::font;
 
-    TileIsoHexa::TileIsoHexa(const int& X, const int& Y)
+    TileIsoHexa::TileIsoHexa(const int& X, const int& Y) : sprite(0)
     {
         shape.setPointCount(6);
         shape.setPoint(0,sf::Vector2f(0,(sin_15+sin_75)/2));
@@ -37,19 +37,22 @@ namespace map
         shape.setOutlineColor(sf::Color::Black);
         shape.setOutlineThickness(2);
 
-        txt.setFont(font);
+
+        /*txt.setFont(font);
         txt.setCharacterSize(20);
-        txt.setColor(sf::Color::White);
+        txt.setColor(sf::Color(255,255,255,100));*/
 
 
-        setPositionShape(X,Y);
+        setPosition(X,Y);
     };
 
 
     void TileIsoHexa::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         target.draw(shape,states);
-        target.draw(txt,states);
+        //target.draw(txt,states);
+        if(sprite)
+            target.draw(*sprite,states);
     };
 
     sf::Vector2i TileIsoHexa::toLocal(const int& X,const int& Y)
@@ -79,22 +82,40 @@ namespace map
     }
 
 
-    void TileIsoHexa::setPositionShape(const int& X,const int& Y)
+    void TileIsoHexa::setPosition(const int& X,const int& Y)
     {
-         shape.setPosition(toGlobal(X,Y));
+        sf::Vector2f pos(toGlobal(X,Y));
+        shape.setPosition(pos);
+        if(sprite)
+            sprite->setPosition(pos);
 
-         std::string text= std::to_string(X) + " " + std::to_string(Y);
+         /*std::string text= std::to_string(X) + " " + std::to_string(Y);
          txt.setString(text);
          sf::FloatRect rec = txt.getLocalBounds();
          txt.setOrigin(rec.width/2,rec.height/2);
 
-         txt.setPosition(shape.getPosition());
+         txt.setPosition(shape.getPosition());*/
 
     };
 
     void TileIsoHexa::setTexture(const sf::Texture *texture,bool resetRect)
     {
             shape.setTexture(texture,resetRect);
+    };
+
+    void TileIsoHexa::setSprite(sf::Sprite*& spr)
+    {
+        if(sprite)
+            delete sprite;
+        sprite = spr;
+    };
+
+    void TileIsoHexa::setSprite(const sf::Texture& tex)
+    {
+        if(sprite)
+            sprite->setTexture(tex);
+        else
+            sprite = new sf::Sprite(tex);
     };
 
 };

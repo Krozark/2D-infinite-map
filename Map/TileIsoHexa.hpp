@@ -28,12 +28,16 @@ namespace map
 
             static sf::Font font;
 
-             void setPositionShape(const int& X,const int& Y);
+             void setPosition(const int& X,const int& Y);
              void setTexture(const sf::Texture *texture,bool resetRect=false);
+
+             void setSprite(sf::Sprite*& spr);
+             void setSprite(const sf::Texture& texture);
 
         protected:
             sf::ConvexShape shape;
-            sf::Text txt;
+            sf::Sprite* sprite;
+            //sf::Text txt;
 
         //sprite
     };

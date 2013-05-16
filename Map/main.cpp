@@ -38,7 +38,7 @@ int main(int argc,char* argv[])
 
         carte.draw(window);
 
-        mouse_hex.setPositionShape(pos.x,pos.y);
+        mouse_hex.setPosition(pos.x,pos.y);
         mouse_hex.draw(window);
 
         // Update the window
