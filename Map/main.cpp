@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc,char* argv[])
 {
-    TileIsoHexa::font.loadFromFile("data/ka1.ttf");
+    cfg::Config::font.loadFromFile("data/ka1.ttf");
     
     Map<TileIsoHexa> carte;
     
@@ -33,8 +33,6 @@ int main(int argc,char* argv[])
         window.clear();
         //map cord mousse
         sf::Vector2i pos(carte.toLocal(sf::Mouse::getPosition(window)));
-
-        //carte(pos.x,pos.y);
 
         carte.draw(window);
 

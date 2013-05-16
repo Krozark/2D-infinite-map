@@ -19,6 +19,7 @@ namespace cfg
 
         static std::string tex_path;
         static std::string map_path;
+        static sf::Font font;
         static rm::ResourceManager<std::string,sf::Texture> textureManager;
 
         static void clear()
@@ -30,6 +31,7 @@ namespace cfg
 
 std::string cfg::Config::tex_path("./data/textures/");
 std::string cfg::Config::map_path("./data/map/");
+sf::Font cfg::Config::font;
 rm::ResourceManager<std::string,sf::Texture> cfg::Config::textureManager;
 
 

@@ -19,7 +19,6 @@ constexpr float decalage_y = sin_75+sin_45;
 
 namespace map
 {
-    sf::Font TileIsoHexa::font;
 
     TileIsoHexa::TileIsoHexa(const int& X, const int& Y) : sprite(0)
     {
@@ -37,12 +36,6 @@ namespace map
         shape.setOutlineColor(sf::Color::Black);
         shape.setOutlineThickness(2);
 
-
-        /*txt.setFont(font);
-        txt.setCharacterSize(20);
-        txt.setColor(sf::Color(255,255,255,100));*/
-
-
         setPosition(X,Y);
     };
 
@@ -50,7 +43,6 @@ namespace map
     void TileIsoHexa::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         target.draw(shape,states);
-        //target.draw(txt,states);
         if(sprite)
             target.draw(*sprite,states);
     };
@@ -88,14 +80,6 @@ namespace map
         shape.setPosition(pos);
         if(sprite)
             sprite->setPosition(pos);
-
-         /*std::string text= std::to_string(X) + " " + std::to_string(Y);
-         txt.setString(text);
-         sf::FloatRect rec = txt.getLocalBounds();
-         txt.setOrigin(rec.width/2,rec.height/2);
-
-         txt.setPosition(shape.getPosition());*/
-
     };
 
     void TileIsoHexa::setTexture(const sf::Texture *texture,bool resetRect)
