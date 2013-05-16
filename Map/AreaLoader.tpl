@@ -44,14 +44,15 @@ namespace map
 
                 while(std::getline(ss,type,':'))
                 {
-                    //get values
-                    std::string value;
-                    ss>>value;
                     //remove ' ' before type 
                     type.erase(0,1);
                     //add to area what is needed
                     if(type == "tex")
                     {
+                        //get values
+                        std::string value;
+                        ss>>value;
+
                         if(value[0] == '"' or value[0] == '\'')
                             value = value.substr(1,value.size()-2);
 
@@ -75,10 +76,34 @@ namespace map
                     }
                     else if (type == "obj")
                     {
+                        //get values
+                        std::string value;
+                        ss>>value;
+
                         std::cerr<<"Objects not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                    }
+                    else if(type == "spr")
+                    {
+                        //get values
+                        std::string value;
+                        ss>>value;
+
+                        std::cerr<<"Sprite not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                    }
+                    else if (type == "sprpos")
+                    {
+                        int x,y;
+                        ss>>x>>y;
+
+                        std::cerr<<"Sprite position not yet makes ("<<x<<","<<y<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+
                     }
                     else
                     {
+                        //get values
+                        std::string value;
+                        ss>>value;
+
                         std::cerr<<"Unknow type ("<<type<<":"<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
                     }
                 }
