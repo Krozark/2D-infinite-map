@@ -29,7 +29,7 @@ namespace map
             /* X,Y = map coords*/
             inline T* operator()(const int& X,const int& Y){
                 clock.restart();
-                return tiles[X][Y];
+                return tiles[Y][X];
             };
 
             void draw(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);

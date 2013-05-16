@@ -10,9 +10,9 @@ namespace map
         int y_min = Y*MAP_AREA_SIZE;
 
 
-        for(int i=0;i<MAP_AREA_SIZE;++i)
-            for(int j=0;j<MAP_AREA_SIZE;++j)
-                tiles[i][j] = new T(x_min+i,y_min+j);
+        for(int y=0;y<MAP_AREA_SIZE;++y)
+            for(int x=0;x<MAP_AREA_SIZE;++x)
+                tiles[y][x] = new T(x_min+x,y_min+y);
 
         AreaLoader<T>::loadFromFile(*this,X,Y);
 

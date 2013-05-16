@@ -72,7 +72,7 @@ namespace map
 
                             tex = &cfg::Config::textureManager.add(value,tmp);
                         }
-                        area.tiles[x][y]->setTexture(tex);
+                        area.tiles[y][x]->setTexture(tex);
                     }
                     else if (type == "obj")
                     {
@@ -107,7 +107,7 @@ namespace map
                             tex = &cfg::Config::textureManager.add(value,tmp);
                         }
 
-                        area.tiles[x][y]->setSprite(*tex);
+                        area.tiles[y][x]->setSprite(*tex);
 
                         std::cerr<<"Sprite not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
                     }
@@ -116,7 +116,7 @@ namespace map
                        float orgX,orgY;
                        ss>>orgX>>orgY;
 
-                       area.tiles[x][y]->setSpriteOrigine(orgX,orgY);
+                       area.tiles[y][x]->setSpriteOrigine(orgX,orgY);
 
                         std::cerr<<"Sprite origine not yet makes ("<<x<<","<<y<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
 
@@ -152,7 +152,7 @@ namespace map
             //set default textures
             for(int x=0;x<MAP_AREA_SIZE;++x)
                 for(int y=0;y<MAP_AREA_SIZE;++y)
-                    area.tiles[x][y]->setTexture(tex);
+                    area.tiles[y][x]->setTexture(tex);
         }
         area.clock.restart();
     };

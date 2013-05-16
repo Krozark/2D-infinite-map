@@ -82,28 +82,29 @@ namespace map
             const float dec_x = nb_x / (nb_y - bottom.y - top.y);
             const float dec_y = nb_y / (nb_x - bottom.x - top.x );
 
-            float c_x = dec_x/2;
-            int decalage_x = 0;
-            for(int x=0;x<=nb_x;++x)
+            float c_y = dec_y/2;
+            int decalage_y = 0;
+            for(int y=0;y<=nb_y;++y)
             {
-                float c_y = dec_y/2;
-                int decalage_y = 0;
-                for(int y=0;y<=nb_y;++y)
+                float c_x = dec_x/2;
+                int decalage_x = 0;
+                for(int x=0;x<=nb_x;++x)
                 {
                     (*this)(x-decalage_y,y-decalage_x)->draw(target,states);
-
-                    if((c_y +=1.f) >= dec_y)
+                    if((c_x+=1.f) >= dec_x)
                     {
-                        decalage_y +=1;
-                        c_y -= dec_y;
+                        decalage_x +=1;
+                        c_x -= dec_x;
                     }
                 }
-                if((c_x+=1.f) >= dec_x)
+
+                if((c_y +=1.f) >= dec_y)
                 {
-                    decalage_x +=1;
-                    c_x -= dec_x;
+                    decalage_y +=1;
+                    c_y -= dec_y;
                 }
             }
+
         };
 
        
@@ -120,9 +121,9 @@ namespace map
             sf::Vector2i bottom = toLocal(__bottom.x,__bottom.y);
 
 
-            for(int x=top.x;x<=bottom.x;++x)
+            for(int y=top.y;y<=bottom.y;++y)
             {
-                for(int y=top.y;y<=bottom.y;++y)
+                for(int x=top.x;x<=bottom.x;++x)
                     (*this)(x,y)->draw(target,states);
             }
         };
