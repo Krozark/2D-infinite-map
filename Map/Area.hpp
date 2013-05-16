@@ -37,6 +37,8 @@ namespace map
             static sf::Vector2i toLocal(const int& X,const int& Y);
             static sf::Vector2i toLocal(const sf::Vector2i& pos);
 
+            static sf::Vector2i toGlobal(const int& X,const int& Y);
+
 
         private:
             friend class AreaManager<T>;

@@ -21,7 +21,7 @@ namespace map
         };
 
 
-    template<class T>
+        template<class T>
         T* Map<T>::operator()(const int& X,const int& Y)
         {
             /* area coord */
@@ -45,24 +45,14 @@ namespace map
             sf::Vector2i right(Area<TileIsoHexa>::toLocal(toLocal(__right.x,__right.y)));
             sf::Vector2i left(Area<TileIsoHexa>::toLocal(toLocal(__left.x,__left.y)));
             
-            for(int x=left.x+1;x<=right.x;++x)
-                getOrCreateArea(x,right.y).draw(target,states);
+            right = Area<TileIsoHexa>::toGlobal(right.x+1,right.y);
+            left = Area<TileIsoHexa>::toGlobal(left.x,left.y+1);
 
-            for(int y=right.y+1;y<=left.y-1;++y)
+            for(int y=right.y;y<=left.y;++y)
                 for(int x=left.x;x<=right.x;++x)
-                    getOrCreateArea(x,y).draw(target,states);
-
-            for(int x=left.x;x<=right.x-1;++x)
-                getOrCreateArea(x,left.y).draw(target,states);
-
-            /*for(int y=right.y;y<=left.y;++y)
-                for(int x=left.x;x<=right.x;++x)
-                    getOrCreateArea(x,y).draw(target,states);*/
+                    (*this)(x,y)->draw(target,states);
         };
 
-
-
-       
         /* for a not rotate gride, it's ok */ 
         template <class T>
         void Map<T>::draw(sf::RenderTarget& target, sf::RenderStates states)

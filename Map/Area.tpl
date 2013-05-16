@@ -55,4 +55,13 @@ namespace map
         return toLocal(pos.x,pos.y);
     }
 
+    template<class T>
+    sf::Vector2i Area<T>::toGlobal(const int& X,const int& Y)
+    {
+        return sf::Vector2i(
+            (X<0)?((X-1)*MAP_AREA_SIZE+1):((X)*MAP_AREA_SIZE),
+            (Y<0)?((Y-1)*MAP_AREA_SIZE+1):((Y)*MAP_AREA_SIZE));
+    };
+
+
 };

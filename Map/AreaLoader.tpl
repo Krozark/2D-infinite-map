@@ -23,8 +23,10 @@ namespace map
 
         if(file.is_open()) 
         {
+            int ln=0;
             while(std::getline(file,line))
             {
+                ++ln;
                 //comment
                 if(line[0] == '#')
                     continue;
@@ -36,7 +38,7 @@ namespace map
 
                 if(x < 0 or x >= MAP_AREA_SIZE or y < 0 or y >= MAP_AREA_SIZE)
                 {
-                    std::cerr<<"Coords not correct, min=0, and max=("<<MAP_AREA_SIZE-1<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                    std::cerr<<"Coords not correct, min=0, and max=("<<MAP_AREA_SIZE-1<<") on file <"<<filename<<"> on line: <"<<ln<<"> "<<line<<std::endl;
                     continue;
                 }
 
@@ -82,7 +84,7 @@ namespace map
                         std::string value;
                         ss>>value;
 
-                        std::cerr<<"Objects not yet makes ("<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                        std::cerr<<"Objects not yet makes ("<<value<<") on file <"<<filename<<"> on line: <"<<ln<<"> "<<line<<std::endl;
                     }
                     else if(type == "spr")
                     {
@@ -130,7 +132,7 @@ namespace map
                         std::string value;
                         ss>>value;
 
-                        std::cerr<<"Unknow type ("<<type<<":"<<value<<") on file <"<<filename<<"> on line: "<<line<<std::endl;
+                        std::cerr<<"Unknow type ("<<type<<":"<<value<<") on file <"<<filename<<"> on line: <"<<ln<<"> "<<line<<std::endl;
                     }
                 }
 
