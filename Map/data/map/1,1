@@ -1,11 +1,11 @@
-#0 0 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
-#0 1 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
-#0 2 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
-#0 3 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
-#0 4 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
-#0 5 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
-#0 6 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
-#0 7 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 0 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 1 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 2 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 3 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 4 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 5 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 6 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
+0 7 tex:"bg3.png" spr:"arbre/chene.png" spr-origine:0.5 1
 
 1 0 tex:"bg3.png"
 1 1 tex:"bg3.png"

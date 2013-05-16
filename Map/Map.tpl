@@ -47,7 +47,7 @@ namespace map
             
             right = Area<TileIsoHexa>::toGlobal(right.x+1,right.y);
             left = Area<TileIsoHexa>::toGlobal(left.x,left.y+1);
-
+            
             for(int y=right.y;y<=left.y;++y)
                 for(int x=left.x;x<=right.x;++x)
                     (*this)(x,y)->draw(target,states);
@@ -67,10 +67,8 @@ namespace map
 
 
             for(int y=top.y;y<=bottom.y;++y)
-            {
                 for(int x=top.x;x<=bottom.x;++x)
                     (*this)(x,y)->draw(target,states);
-            }
         };
         
         template<class T>
