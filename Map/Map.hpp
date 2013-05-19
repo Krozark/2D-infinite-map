@@ -20,7 +20,7 @@ namespace map
 {
     /* T is a tile class */
     template<class T>
-    class Map
+    class Map 
     {
         public:
             explicit Map();
@@ -32,7 +32,7 @@ namespace map
             T* operator()(const int& X,const int& Y);
 
             void draw(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
-            void draw_areas(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
+            //void draw_areas(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
 
             template <typename ... Args>
             inline static sf::Vector2i toLocal(const Args&... args){
@@ -43,6 +43,7 @@ namespace map
             inline static sf::Vector2f toGlobal(const Args&... args){
                 return T::toGlobal(args...);
             };
+
 
         private:
             friend AreaManager<T>;

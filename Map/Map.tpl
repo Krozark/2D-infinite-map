@@ -6,7 +6,7 @@
 namespace map
 {
     template<class T>
-        Map<T>::Map() : _last_area(0), areaManager(*this)
+    Map<T>::Map() : _last_area(0), areaManager(*this)
     {
         areaManager.start(120);
     };
@@ -71,7 +71,7 @@ namespace map
                     (*this)(x,y)->draw(target,states);
         };
         
-        template<class T>
+        /*template<class T>
         void Map<T>::draw_areas(sf::RenderTarget& target, sf::RenderStates states)
         {
             mutex.lock();
@@ -83,7 +83,7 @@ namespace map
             }
 
             mutex.unlock();
-        };
+        };*/
 
         /*********** private **********************/
 

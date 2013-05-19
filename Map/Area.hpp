@@ -20,7 +20,7 @@ namespace map
     {
         public:
             /* X,Y = map coords (to multiply with MAP_AREA_SIZE)*/
-            Area(const int& X, const int& Y);
+            explicit Area(const int& X, const int& Y);
             ~Area();
             
             Area(const Area&) = delete;

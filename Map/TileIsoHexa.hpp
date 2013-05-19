@@ -10,7 +10,7 @@ namespace map
     class TileIsoHexa
     {
         public:
-            TileIsoHexa(const int& X,const int& Y);
+            explicit TileIsoHexa(const int& X,const int& Y);
             ~TileIsoHexa(){};
             TileIsoHexa(const TileIsoHexa&) = delete;
             TileIsoHexa& operator=(const TileIsoHexa&) = delete;

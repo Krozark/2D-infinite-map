@@ -18,7 +18,7 @@ namespace map
     class AreaManager
     {
         public:
-            AreaManager(Map<T>& lmap);
+            explicit AreaManager(Map<T>& lmap);
             ~AreaManager();
 
             AreaManager(const AreaManager&) = delete;
