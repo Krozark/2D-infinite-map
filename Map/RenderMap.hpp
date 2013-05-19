@@ -28,6 +28,15 @@ namespace map
 
             void draw(sf::RenderTarget &target,sf::RenderStates states=sf::RenderStates::Default);
 
+            template<typename ... Args >
+            void setOrigin(Args&& ... args);
+
+            template<typename ... Args >
+            void setPosition(Args&& ... args);
+
+            template<typename ... Args >
+            sf::Vector2f getPosition(Args&& ... args);
+
         private:
             Map<T> _map;
             sf::Sprite sprite;

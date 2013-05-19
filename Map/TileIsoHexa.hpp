@@ -18,7 +18,7 @@ namespace map
             void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 
             template < typename ...Args>
-            inline void setFillColor(const Args& ... args) {shape.setFillColor(args...);};
+            inline void setFillColor(Args&& ... args) {shape.setFillColor(std::forward<Args>(args)...);};
 
             static sf::Vector2i toLocal(const int& X,const int& Y);
             static sf::Vector2i toLocal(const sf::Vector2i& pos);

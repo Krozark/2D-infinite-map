@@ -28,6 +28,16 @@ Class
 T is a Tile class.
 
 
+map::RenderMap<T>
+-----------------
+
+T is a tile class.
+
+Allow you to display a map in a separate texture.
+Use RenderMap<T>.draw(RenderTarget&) to display it in a window.
+
+
+
 map::Map\<T\>
 ------
 
