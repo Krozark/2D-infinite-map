@@ -7,6 +7,8 @@ namespace map
         //move(X,Y);
     };
 
+
+
     template<class T>
     void RenderMap<T>::draw(sf::RenderTarget &target,sf::RenderStates states)
     {
@@ -23,6 +25,27 @@ namespace map
     {
         RenderTexture::create(width,height,depthBuffer);
         sprite.setTexture(RenderTexture::getTexture());
+    };
+
+    template<class T>
+    template<typename ... Args >
+    void RenderMap<T>::move(Args&& ... args)
+    {
+        sf::View view(RenderTexture::getView());
+        view.move(args...);
+        RenderTexture::setView(view);
+    };
+
+    template<class T>
+    void RenderMap<T>::setViewPosition(const int& x,const int& y)
+    {
+        sf::View view(RenderTexture::getView());
+        sf::Vector2f pos(T::toGlobal(x,y));
+        auto size(RenderTexture::getSize());
+        pos.x+=size.x/2;
+        pos.y+=size.y/2;
+        view.setCenter(pos);
+        RenderTexture::setView(view);
     };
 
 
@@ -51,7 +74,15 @@ namespace map
     template<typename ... Args>
     sf::Vector2i RenderMap<T>::toLocal(Args&& ... args)
     {
-        return Map<T>::toLocal(args...);
+        sf::Vector2f mouss(RenderTexture::mapPixelToCoords(args...) - sprite.getPosition());
+        return T::toLocal(mouss.x,mouss.y);
+    };
+
+    template<class T>
+    template<typename ... Args>
+    sf::Vector2i RenderMap<T>::toGlobal(Args&& ... args)
+    {
+        return T::toGlobal(args...);
     };
 
 

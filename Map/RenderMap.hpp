@@ -22,9 +22,12 @@ namespace map
             RenderMap(const RenderMap&) = delete;
             RenderMap& operator=(const RenderMap&) = delete;
 
-            // in global coords
-            /*void move(float offsetX, float offsetY);
-            void move(const sf::Vector2f &offset);*/
+            // move the view (in px)
+            template<typename ... Args >
+            void move(Args&& ... args);
+
+            //in Tile position (T) 
+            void setViewPosition(const int& x,const int& y);
 
             void draw(sf::RenderTarget &target,sf::RenderStates states=sf::RenderStates::Default);
 
@@ -38,7 +41,10 @@ namespace map
             sf::Vector2f getPosition(Args&& ... args);
 
             template<typename ... Args >
-            static sf::Vector2i toLocal(Args&& ... args);
+            sf::Vector2i toLocal(Args&& ... args);
+
+            template<typename ... Args >
+            static sf::Vector2i toGlobal(Args&& ... args);
 
         private:
             Map<T> _map;
