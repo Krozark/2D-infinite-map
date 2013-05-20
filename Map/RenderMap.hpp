@@ -14,8 +14,6 @@ namespace map
         public:
             /* RenderTexture.create args
              * unsigned int width, unsigned int height, bool depthBuffer=false
-             * initial position 
-             * X,Y
              */
             explicit RenderMap(unsigned int width, unsigned int height, bool depthBuffer=false);
 
