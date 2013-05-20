@@ -7,3 +7,11 @@ rm::ResourceManager<std::string,sf::Texture> cfg::Config::textureManager;
 sf::Vector2i cfg::Config::mapMoussPosition;
 map::TileIsoHexa cfg::Config::moussCursorTile(0,0);
 
+namespace cfg
+{
+    void Config::clear()
+    {
+        textureManager.clear();
+    };
+};
+

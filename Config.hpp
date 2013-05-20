@@ -25,10 +25,7 @@ namespace cfg
         static sf::Vector2i mapMoussPosition;
         static map::TileIsoHexa moussCursorTile; 
 
-        static void clear()
-        {
-            textureManager.clear();
-        };
+        static void clear();
     };
 };
 
