@@ -17,7 +17,7 @@ namespace map
              * initial position 
              * X,Y
              */
-            explicit RenderMap(unsigned int width, unsigned int height, bool depthBuffer=false,const int& X=0,const int Y=0);
+            explicit RenderMap(unsigned int width, unsigned int height, bool depthBuffer=false);
 
             RenderMap(const RenderMap&) = delete;
             RenderMap& operator=(const RenderMap&) = delete;

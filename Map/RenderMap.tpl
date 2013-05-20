@@ -1,10 +1,9 @@
 namespace map
 {
     template<class T>
-    RenderMap<T>::RenderMap(unsigned int width, unsigned int height, bool depthBuffer,const int& X,const int Y) : RenderTexture()
+    RenderMap<T>::RenderMap(unsigned int width, unsigned int height, bool depthBuffer) : RenderTexture()
     {
         create(width,height,depthBuffer);
-        //move(X,Y);
     };
 
 
