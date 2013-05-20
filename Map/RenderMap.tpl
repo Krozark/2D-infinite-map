@@ -40,11 +40,7 @@ namespace map
     void RenderMap<T>::setViewPosition(const int& x,const int& y)
     {
         sf::View view(RenderTexture::getView());
-        sf::Vector2f pos(T::toGlobal(x,y));
-        auto size(RenderTexture::getSize());
-        pos.x+=size.x/2;
-        pos.y+=size.y/2;
-        view.setCenter(pos);
+        view.setCenter(T::toGlobal(x,y));
         RenderTexture::setView(view);
     };
 
