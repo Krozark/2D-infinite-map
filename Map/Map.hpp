@@ -41,7 +41,7 @@ namespace map
 
             template <typename ... Args>
             inline static sf::Vector2f toGlobal(Args&&... args){
-                return T::toGlobal(std::forward<Args>(args)...);
+                return T::toGlobal(args...);
             };
 
 

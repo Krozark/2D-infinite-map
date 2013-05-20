@@ -50,7 +50,7 @@ namespace map
             
             for(int y=right.y;y<=left.y;++y)
                 for(int x=left.x;x<=right.x;++x)
-                    (*this)(x,y)->draw(target,states);
+                    (*this)(x,y)->draw(target,states,(x==cfg::Config::mapMoussPosition.x and y==cfg::Config::mapMoussPosition.y));
         };
 
         /* for a not rotate gride, it's ok */ 
@@ -68,7 +68,7 @@ namespace map
 
             for(int y=top.y;y<=bottom.y;++y)
                 for(int x=top.x;x<=bottom.x;++x)
-                    (*this)(x,y)->draw(target,states);
+                    (*this)(x,y)->draw(target,states,(x==cfg::Config::mapMoussPosition.x and y==cfg::Config::mapMoussPosition.y));
         };
         
         /*template<class T>

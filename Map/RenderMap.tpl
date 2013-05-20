@@ -30,21 +30,28 @@ namespace map
     template<typename ... Args >
     void RenderMap<T>::setOrigin(Args&& ... args)
     {
-        sprite.setOrigin(std::forward<Args>(args) ...);
+        sprite.setOrigin(std::forward<Args&>(args) ...);
     };
 
     template<class T>
     template<typename ... Args >
     void RenderMap<T>::setPosition(Args&& ... args)
     {
-        sprite.setPosition(std::forward<Args>(args) ...);
+        sprite.setPosition(std::forward<Args&>(args) ...);
     };
 
     template<class T>
     template<typename ... Args >
     sf::Vector2f RenderMap<T>::getPosition(Args&& ... args)
     {
-        return sprite.getPosition(std::forward<Args>(args) ...);
+        return sprite.getPosition(std::forward<Args&>(args) ...);
+    };
+
+    template<class T>
+    template<typename ... Args>
+    sf::Vector2i RenderMap<T>::toLocal(Args&& ... args)
+    {
+        return Map<T>::toLocal(args...);
     };
 
 

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <math.h>
+#include <Config.hpp>
 
 
 const float PI = 3.14159265;
@@ -40,9 +41,13 @@ namespace map
     };
 
 
-    void TileIsoHexa::draw(sf::RenderTarget& target, sf::RenderStates states) const
+    void TileIsoHexa::draw(sf::RenderTarget& target, sf::RenderStates states,bool mouss) const
     {
         target.draw(shape,states);
+        if(mouss)
+        {
+            cfg::Config::moussCursorTile.draw(target,states,false); 
+        }
         if(sprite)
             target.draw(*sprite,states);
     };
@@ -81,6 +86,7 @@ namespace map
         if(sprite)
             sprite->setPosition(pos);
     };
+    
 
     void TileIsoHexa::setTexture(const sf::Texture *texture,bool resetRect)
     {

@@ -37,6 +37,9 @@ namespace map
             template<typename ... Args >
             sf::Vector2f getPosition(Args&& ... args);
 
+            template<typename ... Args >
+            static sf::Vector2i toLocal(Args&& ... args);
+
         private:
             Map<T> _map;
             sf::Sprite sprite;

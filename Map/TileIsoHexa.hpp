@@ -15,10 +15,10 @@ namespace map
             TileIsoHexa(const TileIsoHexa&) = delete;
             TileIsoHexa& operator=(const TileIsoHexa&) = delete;
 
-            void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
+            void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default,bool mouss=false) const;
 
             template < typename ...Args>
-            inline void setFillColor(Args&& ... args) {shape.setFillColor(std::forward<Args>(args)...);};
+            inline void setFillColor(Args&& ... args) {shape.setFillColor(std::forward<Args&>(args)...);};
 
             static sf::Vector2i toLocal(const int& X,const int& Y);
             static sf::Vector2i toLocal(const sf::Vector2i& pos);
