@@ -35,13 +35,13 @@ namespace map
             //void draw_areas(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default);
 
             template <typename ... Args>
-            inline static sf::Vector2i toLocal(const Args&... args){
-                return T::toLocal(args...);
+            inline static sf::Vector2i mapPixelToCoords(const Args&... args){
+                return T::mapPixelToCoords(args...);
             };
 
             template <typename ... Args>
-            inline static sf::Vector2f toGlobal(Args&&... args){
-                return T::toGlobal(args...);
+            inline static sf::Vector2f mapCoordsToPixel(Args&&... args){
+                return T::mapCoordsToPixel(args...);
             };
 
 

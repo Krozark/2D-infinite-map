@@ -32,7 +32,7 @@ int main(int argc,char* argv[])
         // Clear screen
         window.clear();
         //map cord mousse
-        sf::Vector2i pos(carte.toLocal(sf::Mouse::getPosition(window)));
+        sf::Vector2i pos(carte.mapPixelToCoords(sf::Mouse::getPosition(window)));
 
         carte.draw(window);
 

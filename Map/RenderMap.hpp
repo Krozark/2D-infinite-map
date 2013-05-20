@@ -41,10 +41,10 @@ namespace map
             sf::Vector2f getPosition(Args&& ... args);
 
             template<typename ... Args >
-            sf::Vector2i toLocal(Args&& ... args);
+            sf::Vector2i mapPixelToCoords(Args&& ... args);
 
             template<typename ... Args >
-            static sf::Vector2i toGlobal(Args&& ... args);
+            static sf::Vector2i mapCoordsToPixel(Args&& ... args);
 
         private:
             Map<T> _map;

@@ -42,7 +42,7 @@ namespace map
     };
 
     template<class T>
-    sf::Vector2i Area<T>::toLocal(const int& X,const int& Y)
+    sf::Vector2i Area<T>::mapPixelToCoords(const int& X,const int& Y)
     {
         return sf::Vector2i(
             (X<0)?((X-MAP_AREA_SIZE+1)/MAP_AREA_SIZE):(X/MAP_AREA_SIZE),
@@ -50,13 +50,13 @@ namespace map
     };
 
     template<class T>
-    sf::Vector2i Area<T>::toLocal(const sf::Vector2i& pos)
+    sf::Vector2i Area<T>::mapPixelToCoords(const sf::Vector2i& pos)
     {
-        return toLocal(pos.x,pos.y);
+        return mapPixelToCoords(pos.x,pos.y);
     }
 
     template<class T>
-    sf::Vector2i Area<T>::toGlobal(const int& X,const int& Y)
+    sf::Vector2i Area<T>::mapCoordsToPixel(const int& X,const int& Y)
     {
         return sf::Vector2i(
             (X<0)?(X*MAP_AREA_SIZE+1):(X*MAP_AREA_SIZE-1),

@@ -25,7 +25,7 @@ namespace map
         T* Map<T>::operator()(const int& X,const int& Y)
         {
             /* area coord */
-            sf::Vector2i area_pos(Area<T>::toLocal(X,Y));
+            sf::Vector2i area_pos(Area<T>::mapPixelToCoords(X,Y));
             /* coor in the area */
             const int areaX = X & (MAP_AREA_SIZE -1);//< MAP_AREA_SIZE is 2^n so we can de this hack
             const int areaY = Y & (MAP_AREA_SIZE -1);
@@ -42,11 +42,11 @@ namespace map
             sf::Vector2f __right = target.mapPixelToCoords(sf::Vector2i(target_size.x+1,0));
             sf::Vector2f __left = target.mapPixelToCoords(sf::Vector2i(0,target_size.y+1));
 
-            sf::Vector2i right(Area<TileIsoHexa>::toLocal(toLocal(__right.x,__right.y)));
-            sf::Vector2i left(Area<TileIsoHexa>::toLocal(toLocal(__left.x,__left.y)));
+            sf::Vector2i right(Area<TileIsoHexa>::mapPixelToCoords(mapPixelToCoords(__right.x,__right.y)));
+            sf::Vector2i left(Area<TileIsoHexa>::mapPixelToCoords(mapPixelToCoords(__left.x,__left.y)));
             
-            right = Area<TileIsoHexa>::toGlobal(right.x+1,right.y);
-            left = Area<TileIsoHexa>::toGlobal(left.x,left.y+1);
+            right = Area<TileIsoHexa>::mapCoordsToPixel(right.x+1,right.y);
+            left = Area<TileIsoHexa>::mapCoordsToPixel(left.x,left.y+1);
             
             for(int y=right.y;y<=left.y;++y)
                 for(int x=left.x;x<=right.x;++x)
@@ -62,8 +62,8 @@ namespace map
             sf::Vector2f __top = target.mapPixelToCoords(sf::Vector2i(0,0));
             sf::Vector2f __bottom = target.mapPixelToCoords(sf::Vector2i(target_size.x+1,target_size.y+1));
 
-            sf::Vector2i top = toLocal(__top.x,__top.y);
-            sf::Vector2i bottom = toLocal(__bottom.x,__bottom.y);
+            sf::Vector2i top = mapPixelToCoords(__top.x,__top.y);
+            sf::Vector2i bottom = mapPixelToCoords(__bottom.x,__bottom.y);
 
 
             for(int y=top.y;y<=bottom.y;++y)

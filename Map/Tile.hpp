@@ -14,8 +14,8 @@ namespace map
             Tile(const Tile&) = delete;
             Tile& operator=(const Tile&) = delete;
 
-            static sf::Vector2i toLocal(const int x,const int y);
-            static sf::Vector2i toLocal(sf::Vector2i& v);
+            static sf::Vector2i mapPixelToCoords(const int x,const int y);
+            static sf::Vector2i mapPixelToCoords(sf::Vector2i& v);
 
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states= sf::RenderStates::Default) const = 0;
 

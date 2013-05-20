@@ -20,11 +20,11 @@ namespace map
             template < typename ...Args>
             inline void setFillColor(Args&& ... args) {shape.setFillColor(std::forward<Args&>(args)...);};
 
-            static sf::Vector2i toLocal(const int& X,const int& Y);
-            static sf::Vector2i toLocal(const sf::Vector2i& pos);
+            static sf::Vector2i mapPixelToCoords(const int& X,const int& Y);
+            static sf::Vector2i mapPixelToCoords(const sf::Vector2i& pos);
 
-            static sf::Vector2f toGlobal(const int& X,const int& Y);
-            static sf::Vector2f toGlobal(const sf::Vector2i& pos);
+            static sf::Vector2f mapCoordsToPixel(const int& X,const int& Y);
+            static sf::Vector2f mapCoordsToPixel(const sf::Vector2i& pos);
 
 
              void setPosition(const int& X,const int& Y);

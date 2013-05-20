@@ -34,7 +34,7 @@ namespace map
         shape.setOrigin(r_hauteur/2,r_hauteur/4);
 
         //shape.setFillColor(sf::Color::Red);
-        shape.setOutlineColor(sf::Color::Black);
+        shape.setOutlineColor(sf::Color(0,0,0,175));
         shape.setOutlineThickness(2);
 
         setPosition(X,Y);
@@ -52,7 +52,7 @@ namespace map
             target.draw(*sprite,states);
     };
 
-    sf::Vector2i TileIsoHexa::toLocal(const int& X,const int& Y)
+    sf::Vector2i TileIsoHexa::mapPixelToCoords(const int& X,const int& Y)
     {
          const int a = X + r_hauteur/2;
          const int b = Y + r_hauteur/4;
@@ -63,25 +63,25 @@ namespace map
 
     };
 
-    sf::Vector2i TileIsoHexa::toLocal(const sf::Vector2i& pos)
+    sf::Vector2i TileIsoHexa::mapPixelToCoords(const sf::Vector2i& pos)
     {
-        return TileIsoHexa::toLocal(pos.x,pos.y);
+        return TileIsoHexa::mapPixelToCoords(pos.x,pos.y);
     };
 
-    sf::Vector2f TileIsoHexa::toGlobal(const int& X,const int& Y)
+    sf::Vector2f TileIsoHexa::mapCoordsToPixel(const int& X,const int& Y)
     {
         return sf::Vector2f(Y*decalage_x+X*decalage_y,Y*decalage_y/2+X*decalage_x/2);
     };
 
-    sf::Vector2f TileIsoHexa::toGlobal(const sf::Vector2i& pos)
+    sf::Vector2f TileIsoHexa::mapCoordsToPixel(const sf::Vector2i& pos)
     {
-        return toGlobal(pos.x,pos.y);
+        return mapCoordsToPixel(pos.x,pos.y);
     }
 
 
     void TileIsoHexa::setPosition(const int& X,const int& Y)
     {
-        sf::Vector2f pos(toGlobal(X,Y));
+        sf::Vector2f pos(mapCoordsToPixel(X,Y));
         shape.setPosition(pos);
         if(sprite)
             sprite->setPosition(pos);

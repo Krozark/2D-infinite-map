@@ -23,9 +23,12 @@ namespace cfg
         static sf::Font font;
         static rm::ResourceManager<std::string,sf::Texture> textureManager;
         static sf::Vector2i mapMoussPosition;
-        static map::TileIsoHexa moussCursorTile; 
+        static map::TileIsoHexa moussCursorTile;
+        static sf::Texture moussCursorTex;
+        static sf::Sprite moussCursorSpr;
 
         static void clear();
+        static void drawCursor(sf::RenderWindow& target,sf::RenderStates states = sf::RenderStates::Default);
     };
 };
 

@@ -40,7 +40,7 @@ namespace map
     void RenderMap<T>::setViewPosition(const int& x,const int& y)
     {
         sf::View view(RenderTexture::getView());
-        view.setCenter(T::toGlobal(x,y));
+        view.setCenter(T::mapCoordsToPixel(x,y));
         RenderTexture::setView(view);
     };
 
@@ -68,17 +68,17 @@ namespace map
 
     template<class T>
     template<typename ... Args>
-    sf::Vector2i RenderMap<T>::toLocal(Args&& ... args)
+    sf::Vector2i RenderMap<T>::mapPixelToCoords(Args&& ... args)
     {
         sf::Vector2f mouss(RenderTexture::mapPixelToCoords(args...) - sprite.getPosition());
-        return T::toLocal(mouss.x,mouss.y);
+        return T::mapPixelToCoords(mouss.x,mouss.y);
     };
 
     template<class T>
     template<typename ... Args>
-    sf::Vector2i RenderMap<T>::toGlobal(Args&& ... args)
+    sf::Vector2i RenderMap<T>::mapCoordsToPixel(Args&& ... args)
     {
-        return T::toGlobal(args...);
+        return T::mapCoordsToPixel(args...);
     };
 
 
