@@ -46,7 +46,7 @@ namespace map
 
 
         private:
-            friend AreaManager<T>;
+            friend class AreaManager<T>;
             std::unordered_map<std::pair<int,int>,Area<T>*> areas;
             AreaManager<T> areaManager;
             /* To optimise operator(int X, int Y) acces */
