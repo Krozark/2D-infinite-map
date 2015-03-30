@@ -1,3 +1,5 @@
+Deprecated. Use https://github.com/Krozark/SFML-utils instead
+
 2D-Infinite-map
 ===============
 
